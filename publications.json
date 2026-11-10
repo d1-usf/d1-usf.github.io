@@ -1,0 +1,534 @@
+{
+ "source": "Initial list (replaced by the daily PolyPublie sync)",
+ "updated": "2026-11-10",
+ "publications": [
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "CatMADS: Mesh adaptive direct search for constrained blackbox optimization with categorical variables",
+   "authors": "Audet, C., Diouane, Y., Hallé-Hannan, E., Le Digabel, S., & Tribes, C.",
+   "venue": "SIAM Journal on Optimization (accepted)",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "A spectral preconditioner for the conjugate gradient method with iteration budget",
+   "authors": "Diouane, Y., Gürol, S., Mouhtal, O., & Orban, D.",
+   "venue": "SIAM Journal on Matrix Analysis and Applications (accepted)",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "A proximal modified quasi-Newton method for nonsmooth regularized optimization",
+   "authors": "Diouane, Y., Habiboullah, M. L., & Orban, D.",
+   "venue": "SIAM Journal on Optimization, 36(2), 534–563",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "Complexity of trust-region methods in the presence of unbounded Hessian approximations",
+   "authors": "Diouane, Y., Habiboullah, M. L., & Orban, D.",
+   "venue": "Mathematical Programming",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "Direct-search methods for decentralized blackbox optimization",
+   "authors": "Bergou, E. H., Diouane, Y., Kungurtsev, V., & Royer, C. W.",
+   "venue": "Optimization Methods and Software",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "Modeling hierarchical spaces: a review and unified framework for surrogate-based architecture design",
+   "authors": "Saves, P., Hallé-Hannan, E., Bussemaker, J., Diouane, Y., & Bartoli, N.",
+   "venue": "Structural and Multidisciplinary Optimization, 69, 65",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "Nonsmooth exact penalty methods for equality-constrained optimization: complexity and implementation",
+   "authors": "Diouane, Y., Gollier, M., & Orban, D.",
+   "venue": "SIAM Journal on Optimization, 36(2), 626–650",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "RegularizedOptimization.jl: A Julia framework for regularized and nonsmooth optimization",
+   "authors": "Gollier, M., Habiboullah, M. L., Leconte, G., Baraldi, R., Marchi, A. D., Orban, D., & Diouane, Y.",
+   "venue": "Journal of Open Source Software, 11(118), 9344",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "Transfer learning in Bayesian optimization for aircraft design",
+   "authors": "Tfaily, A., Diouane, Y., Bartoli, N., & Kokkolaras, M.",
+   "venue": "Structural and Multidisciplinary Optimization, 69(10), 226",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2026,
+   "title": "Transfer learning in surrogate modeling with emphasis on aircraft design",
+   "authors": "Tfaily, A., Bartoli, N., Diouane, Y., & Kokkolaras, M.",
+   "venue": "Structural and Multidisciplinary Optimization, 69(2)",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2025,
+   "title": "A distance for mixed-variable and hierarchical domains with meta variables",
+   "authors": "Hallé-Hannan, E., Audet, C., Diouane, Y., Le Digabel, S., & Saves, P.",
+   "venue": "Neurocomputing, 131208",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2025,
+   "title": "A stochastic iteratively regularized Gauss–Newton method",
+   "authors": "Bergou, E., Chada, N. K., & Diouane, Y.",
+   "venue": "Inverse Problems, 41(1), 015005",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2025,
+   "title": "Min-max optimisation for nonconvex-nonconcave functions using a random zeroth-order extragradient algorithm",
+   "authors": "Farzin, A. A., Pun, Y.-M., Lesage-Landry, A., Diouane, Y., & Shames, I.",
+   "venue": "Transactions on Machine Learning Research",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2024,
+   "title": "Bayesian optimization with hidden constraints for aircraft design",
+   "authors": "Tfaily, A., Diouane, Y., Bartoli, N., & Kokkolaras, M.",
+   "venue": "Structural and Multidisciplinary Optimization, 67, 13",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2024,
+   "title": "High-dimensional Bayesian optimization using both random and supervised embeddings",
+   "authors": "Priem, R., Diouane, Y., Bartoli, N., Dubreuil, S., & Saves, P.",
+   "venue": "AIAA Journal",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2024,
+   "title": "High-dimensional mixed-categorical Gaussian processes with application to multidisciplinary design optimization for a green aircraft",
+   "authors": "Saves, P., Diouane, Y., Bartoli, N., Lefèbvre, T., & Morlier, J.",
+   "venue": "Structural and Multidisciplinary Optimization, 67, 81",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2024,
+   "title": "Inexact direct-search methods for bilevel optimization problems",
+   "authors": "Diouane, Y., Kungurtsev, V., Rinaldi, F., & Zeffiro, D.",
+   "venue": "Computational Optimization and Applications, 88(2), 469–490 · Best Paper Award 2024",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2024,
+   "title": "SMT 2.0: A surrogate modeling toolbox with a focus on hierarchical and mixed variables Gaussian processes",
+   "authors": "Saves, P., Lafage, R., Bartoli, N., Diouane, Y., Bussemaker, J., Lefèbvre, T., Hwang, J. T., Morlier, J., & Martins, J. R. R. A.",
+   "venue": "Advances in Engineering Software, 188, 103571",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2023,
+   "title": "A mixed-categorical correlation kernel for Gaussian process",
+   "authors": "Saves, P., Diouane, Y., Bartoli, N., Lefebvre, T., & Morlier, J.",
+   "venue": "Neurocomputing, 550, 126472",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2023,
+   "title": "Impact of correlated observation errors on the conditioning of variational data assimilation problems",
+   "authors": "Goux, O., Gürol, S., Weaver, A. T., Diouane, Y., & Guillet, O.",
+   "venue": "Numerical Linear Algebra with Applications",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2023,
+   "title": "TREGO: a trust-region framework for efficient global optimization",
+   "authors": "Diouane, Y., Picheny, V., Le Riche, R., & Scotto Di Perrotolo, A.",
+   "venue": "Journal of Global Optimization, 86(1), 1–23",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2022,
+   "title": "An outer approximation bi-level framework for mixed categorical structural optimization problems",
+   "authors": "Barjhoux, P.-J., Diouane, Y., Grihon, S., & Morlier, J.",
+   "venue": "Structural and Multidisciplinary Optimization, 65(8), 214",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2022,
+   "title": "A stochastic Levenberg–Marquardt method using random models with complexity results",
+   "authors": "Bergou, E. H., Diouane, Y., Kungurtsev, V., & Royer, C. W.",
+   "venue": "SIAM/ASA Journal on Uncertainty Quantification, 10(1), 507–536",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2022,
+   "title": "A subsampling line-search method with second-order results",
+   "authors": "Bergou, E. H., Diouane, Y., Kunc, V., Kungurtsev, V., & Royer, C. W.",
+   "venue": "INFORMS Journal on Optimization, 4(4), 403–425",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2021,
+   "title": "A merit function approach for evolution strategies",
+   "authors": "Diouane, Y.",
+   "venue": "EURO Journal on Computational Optimization, 9, 100001",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2021,
+   "title": "A nonmonotone matrix-free algorithm for nonlinear equality-constrained least-squares problems",
+   "authors": "Bergou, E. H., Diouane, Y., Kungurtsev, V., & Royer, C. W.",
+   "venue": "SIAM Journal on Scientific Computing, 43(5), S743–S766",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2021,
+   "title": "A variational adjoint approach on wide-angle parabolic equation for refractivity inversion",
+   "authors": "Karabaş, U., Diouane, Y., & Douvenot, R.",
+   "venue": "IEEE Transactions on Antennas and Propagation, 69(8), 4861–4870",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2021,
+   "title": "Complexity iteration analysis for strongly convex multi-objective optimization using a Newton path-following procedure",
+   "authors": "Bergou, E.-H., Diouane, Y., & Kungurtsev, V.",
+   "venue": "Optimization Letters, 15(4), 1215–1227",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2021,
+   "title": "Worst-case complexity bounds of directional direct-search methods for multiobjective optimization",
+   "authors": "Custódio, A. L., Diouane, Y., Garmanjani, R., & Riccietti, E.",
+   "venue": "Journal of Optimization Theory and Applications, 188(1), 73–93",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2020,
+   "title": "A bi-level methodology for solving large-scale mixed categorical structural optimization",
+   "authors": "Barjhoux, P.-J., Diouane, Y., Grihon, S., Bettebghor, D., & Morlier, J.",
+   "venue": "Structural and Multidisciplinary Optimization, 62(1), 337–351",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2020,
+   "title": "Convergence and complexity analysis of a Levenberg–Marquardt algorithm for inverse problems",
+   "authors": "Bergou, E. H., Diouane, Y., & Kungurtsev, V.",
+   "venue": "Journal of Optimization Theory and Applications, 185(3), 927–944",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2020,
+   "title": "Upper trust bound feasibility criterion for mixed constrained Bayesian optimization with application to aircraft design",
+   "authors": "Priem, R., Bartoli, N., Diouane, Y., & Sgueglia, A.",
+   "venue": "Aerospace Science and Technology, 105, 105980",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2018,
+   "title": "A line-search algorithm inspired by the adaptive cubic regularization framework and complexity analysis",
+   "authors": "Bergou, E. H., Diouane, Y., & Gratton, S.",
+   "venue": "Journal of Optimization Theory and Applications, 178(3), 885–913",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2017,
+   "title": "On the use of the energy norm in trust-region and adaptive cubic regularization subproblems",
+   "authors": "Bergou, E., Diouane, Y., & Gratton, S.",
+   "venue": "Computational Optimization and Applications, 68(3), 533–554",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2016,
+   "title": "A parallel evolution strategy for an earth imaging problem in geophysics",
+   "authors": "Diouane, Y., Gratton, S., Vasseur, X., Vicente, L. N., & Calandra, H.",
+   "venue": "Optimization and Engineering, 17(1), 3–26",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2015,
+   "title": "Globally convergent evolution strategies",
+   "authors": "Diouane, Y., Gratton, S., & Vicente, L. N.",
+   "venue": "Mathematical Programming, 152(1), 467–490",
+   "url": ""
+  },
+  {
+   "type": "j",
+   "year": 2015,
+   "title": "Globally convergent evolution strategies for constrained optimization",
+   "authors": "Diouane, Y., Gratton, S., & Vicente, L. N.",
+   "venue": "Computational Optimization and Applications, 62(2), 323–346",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2026,
+   "title": "Bayesian algorithm for collaborative optimisation with application to aircraft design",
+   "authors": "Belhafnaoui, M. A., & Diouane, Y.",
+   "venue": "AIAA AVIATION 2026 Forum, San Diego",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2025,
+   "title": "A probabilistic U-Net approach to downscaling climate simulations",
+   "authors": "Alipourhajiagha, M., Lemaire, P.-L., Diouane, Y., & Carreau, J.",
+   "venue": "NeurIPS 2025 (poster), San Diego",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2025,
+   "title": "Multi-fidelity constrained Bayesian optimization with application to aircraft wing design",
+   "authors": "Cordelier, O., Diouane, Y., Bartoli, N., & Laurendeau, É.",
+   "venue": "AIAA Aviation Forum 2025, Las Vegas",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2025,
+   "title": "Sustainable eco-design of hybrid-electric aircraft via Bayesian optimization with mixed hierarchical variables",
+   "authors": "Saves, P., Nguyen Van, E., Bartoli, N., Lefèbvre, T., Diouane, Y., & Morlier, J.",
+   "venue": "Towards Sustainable Aviation Summit 2025, Toulouse",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2024,
+   "title": "A direct-search method for decentralized derivative-free optimization",
+   "authors": "Diouane, Y., Bergou, E. H., Kungurtsev, V., & Royer, C. W.",
+   "venue": "ISMP 2024, Montréal",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2024,
+   "title": "A graph-structured distance for heterogeneous datasets with meta variables",
+   "authors": "Hallé-Hannan, E., Audet, C., Le Digabel, S., & Diouane, Y.",
+   "venue": "ISMP 2024, Montréal",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2024,
+   "title": "A proximal modified quasi-Newton method for nonsmooth regularized optimization",
+   "authors": "Habiboullah, M. L., Diouane, Y., & Orban, D.",
+   "venue": "ISMP 2024, Montréal",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2024,
+   "title": "System-of-systems modeling and optimization: an integrated framework for intermodal mobility",
+   "authors": "Saves, P., Bussemaker, J., Lafage, R., Lefèbvre, T., Bartoli, N., Diouane, Y., & Morlier, J.",
+   "venue": "ODAS 2024, Braunschweig",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2023,
+   "title": "Efficient acquisition functions for Bayesian optimization in the presence of hidden constraints",
+   "authors": "Tfaily, A., Kokkolaras, M., Bartoli, N., & Diouane, Y.",
+   "venue": "AIAA AVIATION 2023 Forum, San Diego",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2023,
+   "title": "High-dimensional efficient global optimization using both random and supervised embeddings",
+   "authors": "Priem, R., Bartoli, N., Diouane, Y., Dubreuil, S., & Saves, P.",
+   "venue": "AIAA AVIATION 2023 Forum, San Diego",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2023,
+   "title": "Multi-objective Bayesian optimization with mixed-categorical design variables for expensive-to-evaluate aeronautical applications",
+   "authors": "Bartoli, N., Lefèbvre, T., Lafage, R., Saves, P., Diouane, Y., Morlier, J., Bussemaker, J., Donelli, G., Gomes de Mello, J. M., Mandorino, M., & Della Vecchia, P.",
+   "venue": "AEROBEST 2023, Lisbon",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2022,
+   "title": "A general square exponential kernel to handle mixed-categorical variables for Gaussian process",
+   "authors": "Saves, P., Diouane, Y., Bartoli, N., Lefèbvre, T., & Morlier, J.",
+   "venue": "AIAA AVIATION 2022 Forum, Chicago",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2022,
+   "title": "A globally convergent evolutionary strategy for stochastic constrained optimization with applications to reinforcement learning",
+   "authors": "Diouane, Y., Lucchi, A., & Patil, V.",
+   "venue": "AISTATS 2022",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2022,
+   "title": "A mixed-categorical data-driven approach for prediction and optimization of hybrid discontinuous composites performance",
+   "authors": "Rufato, R. C., Diouane, Y., Henry, J., Ahlfeld, R., & Morlier, J.",
+   "venue": "AIAA AVIATION 2022 Forum, Chicago",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2022,
+   "title": "Constrained multi-objective Bayesian optimization with application to aircraft design",
+   "authors": "Grapin, R., Diouane, Y., Morlier, J., Bartoli, N., Lefèbvre, T., Saves, P., & Bussemaker, J. H.",
+   "venue": "AIAA AVIATION 2022 Forum, Chicago",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2022,
+   "title": "Multidisciplinary design optimization with mixed categorical variables for aircraft design",
+   "authors": "Saves, P., Bartoli, N., Diouane, Y., Lefèbvre, T., Morlier, J., David, C., Nguyen Van, E., & Defoort, S.",
+   "venue": "AIAA SCITECH 2022 Forum, San Diego",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2021,
+   "title": "A multiscale parametrization for refractivity estimation in the troposphere",
+   "authors": "Karabaş, U., Diouane, Y., & Douvenot, R.",
+   "venue": "EuCAP 2021, Düsseldorf",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2021,
+   "title": "Constrained Bayesian optimization over mixed categorical variables, with application to aircraft design",
+   "authors": "Saves, P., Bartoli, N., Diouane, Y., Lefebvre, T., Morlier, J., David, C., Nguyen Van, E., & Defoort, S.",
+   "venue": "AeroBest 2021, Lisbon",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2021,
+   "title": "Direct-search for a class of stochastic min-max problems",
+   "authors": "Anagnostidis, S.-K., Lucchi, A., & Diouane, Y.",
+   "venue": "AISTATS 2021",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2020,
+   "title": "An efficient application of Bayesian optimization to an industrial MDO framework for aircraft design",
+   "authors": "Priem, R., Gagnon, H., Chittick, I., Dufresne, S., Diouane, Y., & Bartoli, N.",
+   "venue": "AIAA AVIATION 2020 Forum",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2020,
+   "title": "On the use of adjoint methods for refractivity estimation in the troposphere",
+   "authors": "Karabaş, U., Diouane, Y., & Douvenot, R.",
+   "venue": "EuCAP 2020",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2019,
+   "title": "On the use of upper trust bounds in constrained Bayesian optimization infill criteria",
+   "authors": "Priem, R., Bartoli, N., & Diouane, Y.",
+   "venue": "AIAA Aviation 2019 Forum, Dallas",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2018,
+   "title": "A bilevel methodology for solving a structural optimization problem with both continuous and categorical variables",
+   "authors": "Barjhoux, P.-J., Diouane, Y., Grihon, S., Bettebghor, D., & Morlier, J.",
+   "venue": "AIAA AVIATION Forum 2018, Atlanta",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2017,
+   "title": "Mixed variable structural optimization: toward an efficient hybrid algorithm",
+   "authors": "Barjhoux, P.-J., Diouane, Y., Grihon, S., Bettebghor, D., & Morlier, J.",
+   "venue": "WCSMO 2017, Braunschweig",
+   "url": ""
+  },
+  {
+   "type": "c",
+   "year": 2014,
+   "title": "A parallel evolution strategy for acoustic full-waveform inversion",
+   "authors": "Diouane, Y., Calandra, H., Gratton, S., & Vasseur, X.",
+   "venue": "EAGE Workshop on HPC for Upstream, Chania",
+   "url": ""
+  },
+  {
+   "type": "r",
+   "year": 2026,
+   "title": "Adaptive direct search algorithms with relaxable and quantifiable constraints",
+   "authors": "Audet, C., Denorme, T., Diouane, Y., Le Digabel, S., & Tribes, C.",
+   "venue": "Les Cahiers du GERAD G-2026-39",
+   "url": ""
+  },
+  {
+   "type": "r",
+   "year": 2025,
+   "title": "Cat-Suite: A collection of optimization problems with categorical and quantitative variables for benchmarking",
+   "authors": "Hallé-Hannan, E., Audet, C., Diouane, Y., Le Digabel, S., & Tribes, C.",
+   "venue": "Les Cahiers du GERAD G-2025-39",
+   "url": ""
+  },
+  {
+   "type": "r",
+   "year": 2024,
+   "title": "A general error analysis for randomized low-rank approximation with application to data assimilation",
+   "authors": "Scotto Di Perrotolo, A., Diouane, Y., Gürol, S., & Vasseur, X.",
+   "venue": "Les Cahiers du GERAD G-2024-31",
+   "url": ""
+  },
+  {
+   "type": "r",
+   "year": 2024,
+   "title": "An efficient scaled spectral preconditioner for sequences of symmetric positive definite linear systems",
+   "authors": "Diouane, Y., Gürol, S., Mouhtal, O., & Orban, D.",
+   "venue": "Les Cahiers du GERAD G-2024-66",
+   "url": ""
+  }
+ ]
+}
