@@ -17,9 +17,9 @@ EXTRA = ROOT / "publications-extra.json"
 
 PERSON_ID = "ab48fd4d691fbba8bac37dd95723f7ef"   # id of the PolyPublie person view
 BASE = "https://publications.polymtl.ca/cgi/exportview/person"
-CANDIDATES = [
-    f"{BASE}/{PERSON_ID}/JSON/{PERSON_ID}.js",
-    f"{BASE}/Diouane=3AYoussef=3A=3A/JSON/Diouane=3AYoussef=3A=3A.js",
+CANDIDATES = [                                   # (format, url) tried in order
+    ("bibtex", f"{BASE}/{PERSON_ID}/BibTeX/{PERSON_ID}.bib"),
+    ("json",   f"{BASE}/{PERSON_ID}/JSON/{PERSON_ID}.js"),
 ]
 ME_FAMILY = "Diouane"
 
@@ -31,10 +31,96 @@ TYPE_MAP = {                       # EPrints type -> homepage type
 }
 
 
-def fetch(url):
-    req = urllib.request.Request(url, headers={"User-Agent": "homepage-publication-sync/1.0", "Accept": "application/json"})
+def fetch_text(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "homepage-publication-sync/1.0"})
     with urllib.request.urlopen(req, timeout=60) as r:
-        return json.loads(r.read().decode("utf-8"))
+        return r.read().decode("utf-8", errors="replace")
+
+
+# ---------- BibTeX ----------
+ACCENTS = {"'": "\u0301", "`": "\u0300", "^": "\u0302", '"': "\u0308", "~": "\u0303", "c": "\u0327", "=": "\u0304", ".": "\u0307", "v": "\u030c", "u": "\u0306", "H": "\u030b", "k": "\u0328"}
+
+
+def delatex(t):
+    t = re.sub(r"\\(['`^\"~=.])\s*\{?\\?([A-Za-z])\}?", lambda m: unicodedata.normalize("NFC", m.group(2) + ACCENTS[m.group(1)]), t)
+    t = re.sub(r"\\([cvuHk])\s*\{([A-Za-z])\}", lambda m: unicodedata.normalize("NFC", m.group(2) + ACCENTS[m.group(1)]), t)
+    t = t.replace("\\&", "&").replace("--", "–").replace("\\%", "%").replace("\\_", "_")
+    t = re.sub(r"\\[a-zA-Z]+\s*", "", t)          # drop remaining commands such as \textit
+    return re.sub(r"\s+", " ", t.replace("{", "").replace("}", "")).strip()
+
+
+def parse_bibtex(text):
+    entries, i = [], 0
+    while True:
+        m = re.compile(r"@(\w+)\s*\{", re.S).search(text, i)
+        if not m:
+            break
+        typ, j, depth = m.group(1).lower(), m.end(), 1
+        k = j
+        while k < len(text) and depth:
+            depth += {"{": 1, "}": -1}.get(text[k], 0)
+            k += 1
+        body, i = text[j:k - 1], k
+        fields, pos = {}, body.find(",") + 1
+        while pos < len(body):
+            fm = re.compile(r"\s*([\w-]+)\s*=\s*", re.S).match(body, pos)
+            if not fm:
+                break
+            name, pos = fm.group(1).lower(), fm.end()
+            if pos < len(body) and body[pos] == "{":
+                d, q = 1, pos + 1
+                while q < len(body) and d:
+                    d += {"{": 1, "}": -1}.get(body[q], 0)
+                    q += 1
+                val, pos = body[pos + 1:q - 1], q
+            elif pos < len(body) and body[pos] == '"':
+                q = body.find('"', pos + 1)
+                val, pos = body[pos + 1:q], q + 1
+            else:
+                q = re.compile(r"[,\n]").search(body, pos)
+                q = q.start() if q else len(body)
+                val, pos = body[pos:q], q
+            fields[name] = delatex(val)
+            nxt = body.find(",", pos)
+            pos = nxt + 1 if nxt != -1 else len(body)
+        entries.append((typ, fields))
+    return entries
+
+
+def bib_creators(s):
+    out = []
+    for a in re.split(r"\s+and\s+", s or ""):
+        a = a.strip()
+        if not a:
+            continue
+        if "," in a:
+            fam, giv = [x.strip() for x in a.split(",", 1)]
+        else:
+            parts = a.split()
+            fam, giv = parts[-1], " ".join(parts[:-1])
+        out.append({"name": {"family": fam, "given": giv}})
+    return out
+
+
+BIB_TYPE = {"article": "article", "inproceedings": "conference_item", "conference": "conference_item",
+            "incollection": "book_section", "techreport": "monograph"}
+
+
+def bibtex_items(text):
+    items = []
+    for typ, f in parse_bibtex(text):
+        t = BIB_TYPE.get(typ)
+        if typ == "misc" and (f.get("booktitle") or f.get("eventtitle") or f.get("howpublished")):
+            t = "conference_item"
+        if not t:
+            continue
+        items.append({"type": t, "title": f.get("title", ""), "date": f.get("year", ""),
+                      "creators": bib_creators(f.get("author")), "publication": f.get("journal"),
+                      "volume": f.get("volume"), "number": f.get("number"), "pagerange": f.get("pages"),
+                      "event_title": f.get("booktitle") or f.get("eventtitle") or f.get("howpublished"),
+                      "event_location": f.get("address"), "series": f.get("institution") or f.get("series"),
+                      "uri": f.get("url") or (f"https://doi.org/{f['doi']}" if f.get("doi") else "")})
+    return items
 
 
 def initials(given):
@@ -125,20 +211,32 @@ def dedupe(rows):
 
 
 def main():
-    data, last_err = None, None
-    for url in CANDIDATES:
+    items = None
+    for fmt, url in CANDIDATES:
         try:
-            data = fetch(url)
-            print(f"Fetched {url}")
-            break
-        except Exception as e:                           # try next candidate
-            last_err = e
+            text = fetch_text(url)
+        except Exception as e:
             print(f"Could not fetch {url}: {e}", file=sys.stderr)
-    if data is None:
+            continue
+        try:
+            if fmt == "bibtex":
+                items = bibtex_items(text)
+            else:
+                data = json.loads(text)
+                items = data if isinstance(data, list) else data.get("items", [])
+        except Exception as e:
+            items = None
+            print(f"Could not read {fmt} from {url}: {e}", file=sys.stderr)
+        if items:
+            print(f"Read {len(items)} items ({fmt}) from {url}")
+            break
+        print(f"No usable items in {fmt} export. Start of response:\n{text[:400]}", file=sys.stderr)
+        items = None
+    if not items:
         print("No export could be read; publications.json left unchanged.", file=sys.stderr)
-        sys.exit(1 if last_err else 0)
+        sys.exit(1)
 
-    rows = convert(data if isinstance(data, list) else data.get("items", []))
+    rows = convert(items)
     if EXTRA.exists():
         rows += json.loads(EXTRA.read_text(encoding="utf-8"))
     rows = dedupe(rows)
