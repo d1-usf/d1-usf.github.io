@@ -13,22 +13,6 @@
   {
    "type": "j",
    "year": 2026,
-   "title": "A spectral preconditioner for the conjugate gradient method with iteration budget",
-   "authors": "Diouane, Y., Gürol, S., Mouhtal, O., & Orban, D.",
-   "venue": "SIAM Journal on Matrix Analysis and Applications (accepted)",
-   "url": ""
-  },
-  {
-   "type": "j",
-   "year": 2026,
-   "title": "CatMADS: Mesh adaptive direct search for constrained blackbox optimization with categorical variables",
-   "authors": "Audet, C., Diouane, Y., Hallé-Hannan, E., Le Digabel, S., & Tribes, C.",
-   "venue": "SIAM Journal on Optimization (accepted)",
-   "url": ""
-  },
-  {
-   "type": "j",
-   "year": 2026,
    "title": "Complexity of trust-region methods in the presence of unbounded Hessian approximations",
    "authors": "Diouane, Y., Habiboullah, M. L., & Orban, D.",
    "venue": "Mathematical Programming",
@@ -161,6 +145,14 @@
    "authors": "Hallé-Hannan, E., Audet, C., Diouane, Y., Le Digabel, S., & Tribes, C.",
    "venue": "Groupe d'études et de recherche en analyse des décisions",
    "url": "https://www.gerad.ca/en/papers/G-2025-39"
+  },
+  {
+   "type": "r",
+   "year": 2025,
+   "title": "CatMADS: Mesh Adaptive Direct Search for constrained blackbox optimization with categorical variables",
+   "authors": "Audet, C., Diouane, Y., Hallé-Hannan, E., Le Digabel, S., & Tribes, C.",
+   "venue": "Groupe d'études et de recherche en analyse des décisions",
+   "url": "https://www.gerad.ca/fr/papers/G-2025-42"
   },
   {
    "type": "j",
