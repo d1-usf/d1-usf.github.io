@@ -1,4 +1,4 @@
-# Youssef Diouane — homepage
+# Prof. Youssef Diouane — homepage
 
 Static site: `index.html` plus `publications.json`, which a GitHub Action refreshes every day from PolyPublie (Polytechnique Montréal).
 
