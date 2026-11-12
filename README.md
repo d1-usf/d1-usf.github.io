@@ -16,8 +16,6 @@ Static site: `index.html` plus `publications.json`, which a GitHub Action refres
   paper, and writes `publications.json`.
 - `index.html` loads `publications.json` when the page opens. If the file is missing or unreadable,
   the page shows the list built into the HTML, so it never appears empty.
-- `publications-extra.json` holds entries that are not (yet) in PolyPublie, such as accepted papers.
-  They are merged in; when PolyPublie later has the same title, its version wins. Remove an entry here once it is redundant.
 - To run the sync by hand: `python scripts/update_publications.py` (Python 3, no extra packages).
 
 Other hosts (Polytechnique web space, etc.): upload `index.html` and `publications.json` and run the script on any machine
