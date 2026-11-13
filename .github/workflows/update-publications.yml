@@ -2,15 +2,22 @@ name: Update publications from PolyPublie
 
 on:
   schedule:
-    - cron: "17 9 * * *"     # every day at 09:17 UTC
+    - cron: "17 9 * * *"     # every day at 09:17 UTC (04:17 in Montréal)
+    - cron: "17 21 * * *"    # second try at 21:17 UTC (16:17 in Montréal), in case PolyPublie was down
   workflow_dispatch:          # "Run workflow" button in the Actions tab
 
 permissions:
-  contents: write
+  contents: write             # commit publications.json
+  pages: write                # ask GitHub Pages to rebuild the site
+
+concurrency:
+  group: update-publications
+  cancel-in-progress: false
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -25,7 +32,12 @@ jobs:
             git config user.email "actions@users.noreply.github.com"
             git add publications.json
             git commit -m "Update publications from PolyPublie"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
             git push
           else
             echo "No change."
           fi
+      - name: Rebuild the site
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages rebuild request skipped."
