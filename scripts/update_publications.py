@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Sync publications.json with Youssef Diouane's PolyPublie profile (Polytechnique Montréal).
+Run once a week by .github/workflows/update-publications.yml (Monday, with a Tuesday backup).
 
 PolyPublie is an EPrints repository. Its "person" view can be exported as JSON:
     https://publications.polymtl.ca/view/person/Diouane,_Youssef.html
@@ -9,7 +10,7 @@ merges optional manual entries from publications-extra.json, and writes publicat
 
 Standard library only. Run:  python scripts/update_publications.py
 """
-import json, re, sys, unicodedata, urllib.request, datetime, pathlib
+import json, os, re, sys, time, unicodedata, urllib.request, datetime, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "publications.json"
@@ -35,6 +36,11 @@ def fetch_text(url):
     req = urllib.request.Request(url, headers={"User-Agent": "homepage-publication-sync/1.0"})
     with urllib.request.urlopen(req, timeout=60) as r:
         return r.read().decode("utf-8", errors="replace")
+
+
+RETRY_WAITS = [30, 90, 180]        # seconds between rounds when PolyPublie does not answer
+STALE_DAYS = 14                    # only fail the run (and get an e-mail) after this many days without a sync
+FRESH_DAYS = 5                     # backup run: nothing to do if the last sync is more recent than this
 
 
 # ---------- BibTeX ----------
@@ -210,14 +216,17 @@ def dedupe(rows):
     return sorted(best.values(), key=lambda r: (-r["year"], rank[r["type"]], r["title"].lower()))
 
 
-def main():
-    items = None
+def read_export():
+    """One pass over the export formats. Returns (items, reached) where reached tells
+    whether PolyPublie answered at all (False = network problem, worth retrying)."""
+    reached = False
     for fmt, url in CANDIDATES:
         try:
             text = fetch_text(url)
         except Exception as e:
             print(f"Could not fetch {url}: {e}", file=sys.stderr)
             continue
+        reached = True
         try:
             if fmt == "bibtex":
                 items = bibtex_items(text)
@@ -229,11 +238,39 @@ def main():
             print(f"Could not read {fmt} from {url}: {e}", file=sys.stderr)
         if items:
             print(f"Read {len(items)} items ({fmt}) from {url}")
-            break
+            return items, True
         print(f"No usable items in {fmt} export. Start of response:\n{text[:400]}", file=sys.stderr)
-        items = None
+    return None, reached
+
+
+def last_sync():
+    try:
+        return datetime.date.fromisoformat(json.loads(OUT.read_text(encoding="utf-8"))["updated"])
+    except Exception:
+        return None
+
+
+def main():
+    last = last_sync()
+    if os.environ.get("BACKUP_RUN") == "true" and last and (datetime.date.today() - last).days < FRESH_DAYS:
+        print(f"Already synced on {last}; backup run has nothing to do.")
+        return
+    items, reached = read_export()
+    for wait in RETRY_WAITS:
+        if items or reached:
+            break
+        print(f"PolyPublie did not answer; retrying in {wait} s ...", file=sys.stderr)
+        time.sleep(wait)
+        items, reached = read_export()
     if not items:
-        print("No export could be read; publications.json left unchanged.", file=sys.stderr)
+        last = last_sync()
+        age = (datetime.date.today() - last).days if last else None
+        why = "PolyPublie could not be reached" if not reached else "the PolyPublie export could not be read"
+        if age is not None and age < STALE_DAYS:
+            # Short outage: keep the current list, do not mark the run as failed.
+            print(f"::warning::{why}; publications.json left unchanged (last sync {last}, {age} day(s) ago). Will retry at the next run.")
+            return
+        print(f"::error::{why} and the last successful sync is {age if age is not None else 'unknown'} day(s) old; publications.json left unchanged.")
         sys.exit(1)
 
     rows = convert(items)
@@ -247,7 +284,7 @@ def main():
     old = json.loads(OUT.read_text(encoding="utf-8")).get("publications") if OUT.exists() else None
     # Always rewrite the file: "updated" is the date of the last successful check, so the
     # homepage shows "Synced from PolyPublie on <today>" even when no new paper appeared.
-    # The resulting daily commit also keeps the repository active, so GitHub never pauses
+    # The resulting weekly commit also keeps the repository active, so GitHub never pauses
     # the scheduled workflow (it does so after 60 days without activity in public repos).
     OUT.write_text(json.dumps({"source": "PolyPublie, Polytechnique Montréal", "updated": datetime.date.today().isoformat(),
                                "publications": rows}, ensure_ascii=False, indent=1), encoding="utf-8")
