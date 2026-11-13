@@ -245,12 +245,16 @@ def main():
         sys.exit(1)
 
     old = json.loads(OUT.read_text(encoding="utf-8")).get("publications") if OUT.exists() else None
-    if old == rows:
-        print("No change.")
-        return
+    # Always rewrite the file: "updated" is the date of the last successful check, so the
+    # homepage shows "Synced from PolyPublie on <today>" even when no new paper appeared.
+    # The resulting daily commit also keeps the repository active, so GitHub never pauses
+    # the scheduled workflow (it does so after 60 days without activity in public repos).
     OUT.write_text(json.dumps({"source": "PolyPublie, Polytechnique Montréal", "updated": datetime.date.today().isoformat(),
                                "publications": rows}, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"Wrote {len(rows)} publications to {OUT.name}")
+    if old == rows:
+        print(f"No new publications ({len(rows)} listed); sync date refreshed.")
+    else:
+        print(f"Wrote {len(rows)} publications to {OUT.name}")
 
 
 if __name__ == "__main__":
