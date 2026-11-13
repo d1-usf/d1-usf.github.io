@@ -2,8 +2,8 @@ name: Update publications from PolyPublie
 
 on:
   schedule:
-    - cron: "17 9 * * *"     # every day at 09:17 UTC (04:17 in Montréal)
-    - cron: "17 21 * * *"    # second try at 21:17 UTC (16:17 in Montréal), in case PolyPublie was down
+    - cron: "17 9 * * 1"     # every Monday at 09:17 UTC (04:17 in Montréal)
+    - cron: "17 9 * * 2"     # backup on Tuesday, only acts if Monday's sync did not succeed
   workflow_dispatch:          # "Run workflow" button in the Actions tab
 
 permissions:
@@ -24,6 +24,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Fetch publications
+        env:
+          BACKUP_RUN: ${{ github.event.schedule == '17 9 * * 2' }}
         run: python scripts/update_publications.py
       - name: Commit if changed
         run: |
